@@ -19,18 +19,17 @@ const movieSlice = createSlice({
         loading: payload,
       };
     },
-    addMovies(state, { payload }) {
+    setAllMovies(state, { payload }) {
       state.movies = payload;
     },
   },
 });
 
-export const { setLoading, addMovies } = movieSlice.actions;
+export const { setLoading, setAllMovies } = movieSlice.actions;
 
 export function fetchAllMovies() {
   return async (dispatch, getState) => {
     dispatch(setLoading(true));
-
     axios
       .get(
         `${REACT_APP_BASE_URL}/movie/popular?api_key=${REACT_APP_API_KEY}&page=1`
@@ -38,7 +37,7 @@ export function fetchAllMovies() {
       .then(function (response) {
         // handle success
         let data = response.data.results;
-        dispatch(addMovies(data));
+        dispatch(setAllMovies(data));
         console.log(data);
       })
       .catch(function (error) {
@@ -46,7 +45,7 @@ export function fetchAllMovies() {
         console.log(error);
       })
       .then(function () {
-        dispatch(setLoading(true));
+        dispatch(setLoading(false));
       });
   };
 }

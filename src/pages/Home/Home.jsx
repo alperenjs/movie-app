@@ -12,6 +12,7 @@ function Home() {
   }));
 
   useEffect(() => {
+    console.log(2);
     dispatch(fetchAllMovies());
   }, [dispatch]);
 
