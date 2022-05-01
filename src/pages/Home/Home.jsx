@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import MovieList from "../../components/MovieList";
 import "./home.css";
 import {
   fetchAllMovies,
@@ -17,16 +18,20 @@ function Home() {
     movies: getAllMovies(state),
   }));
 
-  useEffect(() => {
-    dispatch(searchMovies("hemswor"));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(searchMovies("hemswor"));
+  // }, [dispatch]);
 
   // useEffect(() => {
   //   console.log(2);
   //   dispatch(fetchAllMovies());
   // }, [dispatch]);
 
-  return <div>Home</div>;
+  return (
+    <>
+      <MovieList />
+    </>
+  );
 }
 
 export default Home;
