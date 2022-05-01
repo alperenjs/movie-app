@@ -9,7 +9,7 @@ const initialState = {
   movies: [],
   movieDetail: {},
   castInfo: {},
-  personDetail: {}
+  personDetail: {},
 };
 
 const movieSlice = createSlice({
@@ -33,15 +33,20 @@ const movieSlice = createSlice({
     },
     setPersonDetail(state, { payload }) {
       state.personDetail = payload;
-    }
+    },
   },
 });
 
-export const { setLoading, setAllMovies, setMovieDetail, setCastInfo, setPersonDetail } =
-  movieSlice.actions;
+export const {
+  setLoading,
+  setAllMovies,
+  setMovieDetail,
+  setCastInfo,
+  setPersonDetail,
+} = movieSlice.actions;
 
 export function fetchAllMovies() {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(setLoading(true));
     axios
       .get(
@@ -64,7 +69,7 @@ export function fetchAllMovies() {
 }
 
 export function fetchMovieDetail(id) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(setLoading(true));
     axios
       .get(`${REACT_APP_BASE_URL}/movie/${id}?api_key=${REACT_APP_API_KEY}`)
@@ -85,7 +90,7 @@ export function fetchMovieDetail(id) {
 }
 
 export function fetchCastInfo(id) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(setLoading(true));
     axios
       .get(
@@ -108,16 +113,14 @@ export function fetchCastInfo(id) {
 }
 
 export function fetchPersonDetail(id) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(setLoading(true));
     axios
-      .get(
-        `${REACT_APP_BASE_URL}/person/${id}?api_key=${REACT_APP_API_KEY}`
-      )
+      .get(`${REACT_APP_BASE_URL}/person/${id}?api_key=${REACT_APP_API_KEY}`)
       .then(function (response) {
         // handle success
         let data = response.data;
-        dispatch(setCastInfo(data));
+        dispatch(setPersonDetail(data));
         console.log("presondetail", data);
       })
       .catch(function (error) {
