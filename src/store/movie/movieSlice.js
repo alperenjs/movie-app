@@ -7,6 +7,7 @@ const { REACT_APP_BASE_URL, REACT_APP_API_KEY } = process.env;
 const initialState = {
   loading: false,
   movies: [],
+  searchResult: [],
   movieDetail: {},
   castInfo: {},
   personDetail: {},
@@ -24,6 +25,9 @@ const movieSlice = createSlice({
     },
     setAllMovies(state, { payload }) {
       state.movies = payload;
+    },
+    setSearchResult(state, { payload }) {
+      state.searchResult = payload;
     },
     setMovieDetail(state, { payload }) {
       state.movieDetail = payload;
@@ -43,6 +47,7 @@ export const {
   setMovieDetail,
   setCastInfo,
   setPersonDetail,
+  setSearchResult,
 } = movieSlice.actions;
 
 export function fetchAllMovies() {
@@ -57,6 +62,29 @@ export function fetchAllMovies() {
         let data = response.data.results;
         dispatch(setAllMovies(data));
         console.log(data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        dispatch(setLoading(false));
+      });
+  };
+}
+
+export function searchMovies(keyword) {
+  return async (dispatch, getState) => {
+    dispatch(setLoading(true));
+    axios
+      .get(
+        `${REACT_APP_BASE_URL}/search/multi?api_key=${REACT_APP_API_KEY}&query=${keyword}`
+      )
+      .then(function (response) {
+        // handle success
+        let data = response.data.results;
+        dispatch(setSearchResult(data));
+        console.log("searchresult", data);
       })
       .catch(function (error) {
         // handle error

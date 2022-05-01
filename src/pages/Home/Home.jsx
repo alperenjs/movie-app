@@ -6,6 +6,7 @@ import {
   fetchMovieDetail,
   fetchCastInfo,
   fetchPersonDetail,
+  searchMovies,
 } from "../../store/movie/movieSlice";
 import { getLoading, getAllMovies } from "../../store/movie/selectors";
 
@@ -17,8 +18,7 @@ function Home() {
   }));
 
   useEffect(() => {
-    console.log(2);
-    dispatch(fetchPersonDetail(287));
+    dispatch(searchMovies("hemswor"));
   }, [dispatch]);
 
   // useEffect(() => {
