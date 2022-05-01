@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./home.css";
-import { fetchAllMovies } from "../../store/movie/movieSlice";
+import { fetchAllMovies, fetchMovieDetail } from "../../store/movie/movieSlice";
 import { getLoading, getAllMovies } from "../../store/movie/selectors";
 
 function Home() {
@@ -13,8 +13,13 @@ function Home() {
 
   useEffect(() => {
     console.log(2);
-    dispatch(fetchAllMovies());
+    dispatch(fetchMovieDetail(580489));
   }, [dispatch]);
+  
+  // useEffect(() => {
+  //   console.log(2);
+  //   dispatch(fetchAllMovies());
+  // }, [dispatch]);
 
   return <div>Home</div>;
 }
