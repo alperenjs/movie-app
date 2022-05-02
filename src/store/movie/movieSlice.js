@@ -123,7 +123,6 @@ export function fetchUpcomingMovies() {
         // handle success
         let data = response.data.results;
         dispatch(setUpcomingMovies(data));
-        console.log(data);
       })
       .catch(function (error) {
         // handle error
