@@ -5,6 +5,7 @@ import axios from "axios";
 const { REACT_APP_BASE_URL, REACT_APP_API_KEY } = process.env;
 
 const initialState = {
+  isSearching: false,
   loading: false,
   movies: [],
   searchResult: [],
@@ -23,6 +24,12 @@ const movieSlice = createSlice({
       return {
         ...state,
         loading: payload,
+      };
+    },
+    setIsSearching(state, { payload }) {
+      return {
+        ...state,
+        isSearching: payload,
       };
     },
     setAllMovies(state, { payload }) {
@@ -58,6 +65,7 @@ export const {
   setSearchResult,
   setUpcomingMovies,
   setTrailerVideos,
+  setIsSearching,
 } = movieSlice.actions;
 
 export function fetchAllMovies() {
