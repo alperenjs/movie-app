@@ -9,9 +9,10 @@ const initialState = {
   movies: [],
   searchResult: [],
   movieDetail: {},
-  castInfo: {},
+  castInfo: [],
   personDetail: {},
-  upcomingMovies: []
+  upcomingMovies: [],
+  trailerVideos: [],
 };
 
 const movieSlice = createSlice({
@@ -42,6 +43,9 @@ const movieSlice = createSlice({
     setUpcomingMovies(state, { payload }) {
       state.upcomingMovies = payload;
     },
+    setTrailerVideos(state, { payload }) {
+      state.trailerVideos = payload;
+    },
   },
 });
 
@@ -52,7 +56,8 @@ export const {
   setCastInfo,
   setPersonDetail,
   setSearchResult,
-  setUpcomingMovies
+  setUpcomingMovies,
+  setTrailerVideos,
 } = movieSlice.actions;
 
 export function fetchAllMovies() {
@@ -67,6 +72,29 @@ export function fetchAllMovies() {
         let data = response.data.results;
         dispatch(setAllMovies(data));
         console.log(data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        dispatch(setLoading(false));
+      });
+  };
+}
+export function fetchTrailerVideos(id) {
+  // https://www.youtube.com/watch?v=
+  return async (dispatch, getState) => {
+    dispatch(setLoading(true));
+    axios
+      .get(
+        `${REACT_APP_BASE_URL}/movie/${id}/videos?api_key=${REACT_APP_API_KEY}&page=1`
+      )
+      .then(function (response) {
+        // handle success
+        let data = response.data.results;
+        dispatch(setTrailerVideos(data));
+        console.log("ali", data);
       })
       .catch(function (error) {
         // handle error
@@ -155,8 +183,8 @@ export function fetchCastInfo(id) {
       .then(function (response) {
         // handle success
         let data = response.data;
-        dispatch(setCastInfo(data));
-        console.log("castDetail", data);
+        dispatch(setCastInfo(data.cast));
+        console.log("castDetail", data.cast);
       })
       .catch(function (error) {
         // handle error

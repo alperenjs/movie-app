@@ -5,3 +5,4 @@ export const getCastInfo = (state) => state.movies.castInfo;
 export const getPersonDetail = (state) => state.movies.personDetail;
 export const getSearchResult = (state) => state.movies.searchResult;
 export const getUpcomingMovies = (state) => state.movies.upcomingMovies;
+export const getTrailerVideos = (state) => state.movies.trailerVideos;

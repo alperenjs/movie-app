@@ -5,7 +5,6 @@ import { fetchAllMovies } from "../store/movie/movieSlice";
 import MovieCard from "./MovieCard";
 import { getLoading, getAllMovies } from "../store/movie/selectors";
 
-
 function MovieList() {
   const dispatch = useDispatch();
 
@@ -22,12 +21,18 @@ function MovieList() {
   return (
     <>
       <section className="mt-9">
-        <div className="mt-4 grid grid-cols-2 gap-y-5 sm:grid-cols-3 gap-x-5 ">
-          {
-            movies.map((movie) => {
-             return <MovieCard key={movie.id} title={movie.original_title} vote_average={movie.vote_average} img_url={movie.poster_path}/>
-            })
-          }
+        <div className="mt-2 grid grid-cols-2 gap-y-5 sm:grid-cols-3 gap-x-5 ">
+          {movies.map((movie) => {
+            return (
+              <MovieCard
+                key={movie.id}
+                id={movie.id}
+                title={movie.original_title}
+                vote_average={movie.vote_average}
+                img_url={movie.poster_path}
+              />
+            );
+          })}
         </div>
       </section>
     </>
