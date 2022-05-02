@@ -2,6 +2,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 import * as React from "react";
 
 export default function Navbar() {
@@ -10,7 +11,7 @@ export default function Navbar() {
       <AppBar position="static" style={{ background: "rgb(39 39 42)" }}>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Movi-E
+            <Link to={`/`}>Movi-E</Link>
           </Typography>
         </Toolbar>
         <div className="items-center content-center justify-center flex">
