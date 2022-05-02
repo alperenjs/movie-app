@@ -19,13 +19,14 @@ export default function Navbar() {
   };
 
   const handleInputFocus = () => {
-    console.log("arıyor...")
-      dispatch(setIsSearching(true));
+    console.log("arıyor...");
+    dispatch(setIsSearching(true));
   };
 
   const handleInputBlur = () => {
     setTimeout(() => {
       dispatch(setIsSearching(false));
+      setSearchTerm("")
     }, 500);
   };
 
