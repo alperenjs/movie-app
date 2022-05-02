@@ -33,6 +33,7 @@ function UpcomingList() {
                 title={movie.title}
                 vote_average={movie.vote_average}
                 img_url={movie.poster_path}
+                release_date={movie.release_date}
               />
             );
           })}

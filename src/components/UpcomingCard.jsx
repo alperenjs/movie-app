@@ -1,16 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function UpcomingCard({ id, title, vote_average, img_url }) {
+function UpcomingCard({ id, title, vote_average, img_url, release_date }) {
   let img = "https://image.tmdb.org/t/p/w185/" + img_url;
+  let date = release_date;
+  date = new Date(date).toLocaleDateString("en-EN");
 
   return (
     <Link to={`/movie/${id}`}>
       <li className="flex space-y-3 space-x-3 mt-2 ml-5 hover:scale-105 duration-100 ">
         <img src={img} className="w-1/3 rounded-md" alt="" />
-        <div className="flex flex-col justify-between  ">
+        <div className="flex flex-col justify-between  items-start text-left">
           <div className="flex flex-col space-y-1">
             <span className="text-gray-700 font-semibold">{title}</span>
+          </div>
+          <div className="flex flex-col space-y-1">
+            <span>Release Date:</span>
+            <span className="text-gray-700 font-semibold">{date ?? "unknown"}</span>
           </div>
           <div className="flex space-x-2 items-center">
             <svg
