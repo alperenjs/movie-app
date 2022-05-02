@@ -142,7 +142,7 @@ export function searchMovies(keyword) {
     dispatch(setLoading(true));
     axios
       .get(
-        `${REACT_APP_BASE_URL}/search/multi?api_key=${REACT_APP_API_KEY}&query=${keyword}`
+        `${REACT_APP_BASE_URL}/search/movie?api_key=${REACT_APP_API_KEY}&query=${keyword}`
       )
       .then(function (response) {
         // handle success

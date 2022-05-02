@@ -16,17 +16,21 @@ function SearchList() {
     <>
       <section className="mt-9">
         <div className="mt-2 grid grid-cols-2 gap-y-5 sm:grid-cols-3 gap-x-5 ">
-          {searchResult?.map((movie) => {
-            return (
-              <MovieCard
-                key={movie.id}
-                id={movie.id}
-                title={movie.original_title}
-                vote_average={movie.vote_average}
-                img_url={movie.poster_path}
-              />
-            );
-          })}
+          {searchResult.length > 0 ? (
+            searchResult.map((movie) => {
+              return (
+                <MovieCard
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.original_title}
+                  vote_average={movie.vote_average}
+                  img_url={movie.poster_path}
+                />
+              );
+            })
+          ) : (
+            <p>veri yok</p>
+          )}
         </div>
       </section>
     </>
