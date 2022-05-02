@@ -23,15 +23,6 @@ function Home() {
     isSearching: getIsSearching(state),
   }));
 
-  // useEffect(() => {
-  //   dispatch(searchMovies("hemswor"));
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   console.log(2);
-  //   dispatch(fetchAllMovies());
-  // }, [dispatch]);
-
   return <>{isSearching === false ? <MovieList /> : <></>}</>;
 }
 

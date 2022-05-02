@@ -19,9 +19,8 @@ export default function Navbar() {
   };
 
   const handleInputFocus = () => {
-    if (searchTerm.length > 3) {
+    console.log("arıyor...")
       dispatch(setIsSearching(true));
-    }
   };
 
   const handleInputBlur = () => {
@@ -31,7 +30,9 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    dispatch(searchMovies(debouncedValue));
+    if (searchTerm.length > 3) {
+      dispatch(searchMovies(debouncedValue));
+    }
   }, [debouncedValue, dispatch]);
 
   return (
