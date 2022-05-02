@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLoading, getSearchResult } from "../store/movie/selectors";
 import { searchMovies } from "../store/movie/movieSlice";
 import MovieCard from "./MovieCard";
+import LoaderCard from "./LoaderCard";
 
 function SearchList() {
   const dispatch = useDispatch();
@@ -29,7 +30,11 @@ function SearchList() {
               );
             })
           ) : (
-            <p>veri yok</p>
+            <>
+            <LoaderCard w={210}/>
+            <LoaderCard w={210}/>
+            <LoaderCard w={210}/>
+            </>
           )}
         </div>
       </section>

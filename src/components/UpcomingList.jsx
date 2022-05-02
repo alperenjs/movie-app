@@ -5,6 +5,7 @@ import { fetchUpcomingMovies } from "../store/movie/movieSlice";
 import MovieCard from "./MovieCard";
 import { getLoading, getUpcomingMovies } from "../store/movie/selectors";
 import UpcomingCard from "./UpcomingCard";
+import LoaderCard from "./LoaderCard";
 
 function UpcomingList() {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ function UpcomingList() {
           Upcoming Movies
         </span>
         <ul className="mt-4 text-gray-400 text-xs space-y-3 overflow-y-auto overflow-x-hidden max-h-screen">
-          {movies.map((movie) => {
+          {movies.length > 0 ? movies.map((movie) => {
             return (
               <UpcomingCard
                 id={movie.id}
@@ -36,7 +37,7 @@ function UpcomingList() {
                 release_date={movie.release_date}
               />
             );
-          })}
+          }): <LoaderCard w={210}/>}
         </ul>
       </div>
     </aside>

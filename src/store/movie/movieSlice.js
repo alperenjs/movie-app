@@ -79,7 +79,6 @@ export function fetchAllMovies() {
         // handle success
         let data = response.data.results;
         dispatch(setAllMovies(data));
-        console.log(data);
       })
       .catch(function (error) {
         // handle error
@@ -102,7 +101,6 @@ export function fetchTrailerVideos(id) {
         // handle success
         let data = response.data.results;
         dispatch(setTrailerVideos(data));
-        console.log("ali", data);
       })
       .catch(function (error) {
         // handle error
@@ -148,7 +146,6 @@ export function searchMovies(keyword) {
         // handle success
         let data = response.data.results;
         dispatch(setSearchResult(data));
-        console.log("searchresult", data);
       })
       .catch(function (error) {
         // handle error
@@ -169,7 +166,6 @@ export function fetchMovieDetail(id) {
         // handle success
         let data = response.data;
         dispatch(setMovieDetail(data));
-        console.log("detail", data);
       })
       .catch(function (error) {
         // handle error
@@ -192,7 +188,6 @@ export function fetchCastInfo(id) {
         // handle success
         let data = response.data;
         dispatch(setCastInfo(data.cast));
-        console.log("castDetail", data.cast);
       })
       .catch(function (error) {
         // handle error
@@ -213,7 +208,6 @@ export function fetchPersonDetail(id) {
         // handle success
         let data = response.data;
         dispatch(setPersonDetail(data));
-        console.log("presondetail", data);
       })
       .catch(function (error) {
         // handle error

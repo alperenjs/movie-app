@@ -18,14 +18,12 @@ function MovieDetail() {
   }));
 
   useEffect(() => {
-    console.log(2);
     dispatch(fetchMovieDetail(id));
   }, [dispatch, id]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
-
   return (
     <div className="flex flex-wrap flex--movie">
       <MovieDetailCard

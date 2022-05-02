@@ -23,7 +23,7 @@ function Home() {
     isSearching: getIsSearching(state),
   }));
 
-  return <>{isSearching === false ? <MovieList /> : <></>}</>;
+  return <MovieList />;
 }
 
 export default Home;

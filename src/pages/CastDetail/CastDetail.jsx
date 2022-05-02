@@ -6,6 +6,7 @@ import TrailerCard from "../../components/TrailerCard";
 import { fetchPersonDetail } from "../../store/movie/movieSlice";
 import { getLoading, getPersonDetail } from "../../store/movie/selectors";
 import Chip from "@mui/material/Chip";
+import LoaderCard from "../../components/LoaderCard";
 
 function CastDetail() {
   let params = useParams();
@@ -27,6 +28,7 @@ function CastDetail() {
 
   let imgBase = "https://image.tmdb.org/t/p/w342";
 
+if(person && !loading) {
   return (
     <div className="w-full md:w-full  rounded overflow-hidden shadow-lg m-4 flex justify-between">
       <div className="md:flex-shrink-0">
@@ -54,6 +56,13 @@ function CastDetail() {
       </div>
     </div>
   );
+}else{
+  return(
+    <LoaderCard  w={"50vw"}/>
+  )
+}
+
+  
 }
 
 export default CastDetail;
