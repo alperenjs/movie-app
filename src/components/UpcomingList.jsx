@@ -24,10 +24,11 @@ function UpcomingList() {
         <span className="font-semibold text-gray-700 text-left flex">
           Upcoming Movies
         </span>
-        <ul className="mt-4 text-gray-400 text-xs space-y-3">
+        <ul className="mt-4 text-gray-400 text-xs space-y-3 overflow-y-auto overflow-x-hidden max-h-screen">
           {movies.map((movie) => {
             return (
               <UpcomingCard
+                id={movie.id}
                 key={movie.id}
                 title={movie.title}
                 vote_average={movie.vote_average}

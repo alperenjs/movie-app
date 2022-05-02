@@ -15,7 +15,7 @@ function TrailerCard({ id }) {
 
   useEffect(() => {
     dispatch(fetchTrailerVideos(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   return (
     <ImageList className="w-full" cols={1} rowHeight={264}>
