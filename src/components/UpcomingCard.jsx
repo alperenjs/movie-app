@@ -6,7 +6,7 @@ function UpcomingCard({ id, title, vote_average, img_url }) {
 
   return (
     <Link to={`/movie/${id}`}>
-      <li className="flex space-y-3 space-x-3 mt-2 hover:scale-110 duration-100 ">
+      <li className="flex space-y-3 space-x-3 mt-2 ml-5 hover:scale-105 duration-100 ">
         <img src={img} className="w-1/3 rounded-md" alt="" />
         <div className="flex flex-col justify-between  ">
           <div className="flex flex-col space-y-1">

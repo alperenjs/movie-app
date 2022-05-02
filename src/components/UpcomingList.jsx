@@ -19,7 +19,7 @@ function UpcomingList() {
   }, [dispatch]);
 
   return (
-    <aside className=" w-1/5 py-10 px-10  min-w-min  hidden lg:block ">
+    <aside className=" w-2/6 py-10 px-10 min-w-min  hidden lg:block ">
       <div className="mt-10">
         <span className="font-semibold text-gray-700 text-left flex">
           Upcoming Movies
