@@ -49,7 +49,7 @@ if(person && !loading) {
         </div>
         <div className="infos">
           <div className="text-xl mt-1  text-left md:text-base lg:text-base  leading-snug truncate-overflow">
-            <span>Release Date: </span>
+            <span>Birth Date: </span>
             <Chip label={date || "?"} />
           </div>
         </div>

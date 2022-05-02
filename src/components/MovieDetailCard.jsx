@@ -81,7 +81,7 @@ function MovieDetailCard({
                         <div className="flex cursor-pointer">
                           <img
                             src={imgBase + item.profile_path}
-                            className="w-4 mr-2 rounded-3xl align-center content-center"
+                            className="w-4 h-4 mr-2 rounded-3xl align-center content-center"
                             alt="cast-img"
                           />
                           <span>{item.name}</span>
