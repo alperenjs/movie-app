@@ -11,6 +11,7 @@ const initialState = {
   movieDetail: {},
   castInfo: {},
   personDetail: {},
+  upcomingMovies: []
 };
 
 const movieSlice = createSlice({
@@ -38,6 +39,9 @@ const movieSlice = createSlice({
     setPersonDetail(state, { payload }) {
       state.personDetail = payload;
     },
+    setUpcomingMovies(state, { payload }) {
+      state.upcomingMovies = payload;
+    },
   },
 });
 
@@ -48,6 +52,7 @@ export const {
   setCastInfo,
   setPersonDetail,
   setSearchResult,
+  setUpcomingMovies
 } = movieSlice.actions;
 
 export function fetchAllMovies() {
@@ -61,6 +66,29 @@ export function fetchAllMovies() {
         // handle success
         let data = response.data.results;
         dispatch(setAllMovies(data));
+        console.log(data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        dispatch(setLoading(false));
+      });
+  };
+}
+
+export function fetchUpcomingMovies() {
+  return async (dispatch, getState) => {
+    dispatch(setLoading(true));
+    axios
+      .get(
+        `${REACT_APP_BASE_URL}/movie/upcoming?api_key=${REACT_APP_API_KEY}&page=1`
+      )
+      .then(function (response) {
+        // handle success
+        let data = response.data.results;
+        dispatch(setUpcomingMovies(data));
         console.log(data);
       })
       .catch(function (error) {
