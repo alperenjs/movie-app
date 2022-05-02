@@ -74,9 +74,9 @@ function MovieDetailCard({
                 <Link key={item.id} to={`/cast/${item.id}`}>
                   <Chip
                   key={item.id}
-                    className="m-1 cursor-pointer"
+                    className="m-1"
                     label={
-                      <div className="flex">
+                      <div className="flex cursor-pointer">
                         <img
                           src={imgBase + item.profile_path}
                           className="w-4 mr-2 rounded-3xl align-center content-center"
